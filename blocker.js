@@ -7,11 +7,19 @@ chrome.runtime.onInstalled.addListener(function() {
 
 // Add your webRequest logic or other functionality here
 
+let blocked = [
+	'facebook.com',
+	'reddit.com',
+]
+
 chrome.webRequest.onBeforeRequest.addListener(
-  function(details) {
-    if (details.url.includes("emu.oko.nyc")) {
-      return { cancel: true };
-    }
+  function( details ){
+  	for( const domain of blocked ){
+  		const regex = new RegExp( domain, 'i')
+	    if( details.url.match( regex ) ){
+	      return { cancel: true };
+	    }  		
+  	}
   },
   { urls: ["<all_urls>"] },
   ["blocking"]
