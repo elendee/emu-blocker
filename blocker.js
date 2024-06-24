@@ -1,3 +1,5 @@
+// import * as env from './.env.js'
+
 // background.js
 console.log("Persistent background script is running.");
 
@@ -7,9 +9,11 @@ chrome.runtime.onInstalled.addListener(function() {
 
 // Add your webRequest logic or other functionality here
 
+
 let blocked = [
 	'facebook.com',
 	'reddit.com',
+	'discord.com',
 ]
 
 chrome.webRequest.onBeforeRequest.addListener(
@@ -24,3 +28,4 @@ chrome.webRequest.onBeforeRequest.addListener(
   { urls: ["<all_urls>"] },
   ["blocking"]
 );
+
