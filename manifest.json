@@ -1,18 +1,13 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "emu blocker",
   "version": "1.0",
   "description": "Block certain sites",
   "permissions": [
     "webRequest",
-    "webRequestBlocking",
-    "tabs",
-	"http://*/*", 
-    "https://*/*"
+    "tabs"
   ],
   "background": {
-    "scripts": ["blocker.js"],
-    "persistent": true,
      "type": "module"
   },
   "content_scripts": [
@@ -22,20 +17,9 @@
       "type": "module"
     }
   ],
-  "browser_action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "images/icon16.png",
-      "48": "images/icon48.png",
-      "128": "images/icon128.png"
-    }
-  },
   "icons": {
     "16": "images/icon16.png",
     "48": "images/icon48.png",
     "128": "images/icon128.png"
-  },
-  "web_accessible_resources": [
-    ".env.js"
-  ]
+  }
 }
